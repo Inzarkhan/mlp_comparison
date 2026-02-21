@@ -1,0 +1,46 @@
+
+DVFS Controller Performance Analysis Report
+==========================================
+Generated: 2026-02-21 04:05:50
+Workload: CPU_Intensive
+Type: MEMORY_INTENSIVE
+Duration: 189 seconds
+Total Samples: 63 (baseline), 49 (DVFS)
+
+WORKLOAD CHARACTERIZATION
+-------------------------
+This is a memory-intensive workload:
+- High L3 miss rate and memory bandwidth → CPU stalls on memory
+- Frequency scaling has limited impact on IPC
+- Ideal strategy: Moderate frequency to save energy without hurting performance
+
+EXECUTIVE SUMMARY
+-----------------
+- Energy Savings: +34.6% ✅
+- IPC Change: -8.0% ❌
+- L3 Miss Rate Reduction: -8.5% ❌
+
+KEY METRICS
+-----------
+default DVFS:
+  Avg Power:     50.17 W
+  Avg IPC:       1.368
+  Avg Freq:      3.22 GHz
+  Avg Temp:      62.3 °C
+  L3 Miss Rate:  0.099
+
+With SW-DVFS:
+  Avg Power:     42.21 W
+  Avg IPC:       1.259
+  Avg Freq:      2.40 GHz
+  Avg Temp:      63.7 °C
+  L3 Miss Rate:  0.108
+
+DVFS Level Distribution (With SW-DVFS):
+  Low: 30 samples (61.2%)
+  High: 14 samples (28.6%)
+  Medium: 5 samples (10.2%)
+
+CONCLUSION
+----------
+❌ The DVFS controller is too aggressive — it boosts frequency unnecessarily, wasting power without improving performance.
